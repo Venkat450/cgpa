@@ -1,0 +1,74 @@
+print("Winning Rules of the Rock Paper Scissor Game as follows: \n"
+                                +"\tRock  vs paper   -> paper wins \n"
+                                +"\tRock  vs scissor -> Rock wins \n"
+                                +"\tpaper vs scissor -> scissor wins \n")
+t,p=0,0
+
+while True:
+
+    # Tell User to enter either Rock, Paper, Scissor    
+    print("Enter choice \n 1. rock \n 2. paper \n 3. scissor \n") 
+    
+    while True:
+        # Get the response from the User 
+        user_choice = input("User turn: > ") 
+        user_choice = user_choice.lower()
+        
+        if user_choice not in ['rock','paper','scissor']:
+            print ("Wrong input, please input again: ")
+        else:
+            break
+ 
+    # Print the response from the User 
+    print("User has choosen : " + user_choice + "\n") 
+    
+
+    
+    # Computer chooses randomly between Rock, Paper and Scissor
+    import random
+    comp_choice = random.choice(['rock','paper','scissor']) 
+
+    # Print computers choice
+    print("Computer choice is: " + comp_choice + "\n") 
+  
+    # Print User Choice and Computer Choice
+    print("\t" + user_choice + "\n V/s \n" + "\t"+ comp_choice) 
+    
+
+    # Decide the condition of wining according to the Game Instructions
+    result = None
+    
+    if((user_choice == "rock" and comp_choice == "paper") or
+      (user_choice == "paper" and comp_choice == "rock" )): 
+        result = "paper"
+    elif((user_choice == "rock" and comp_choice == "scissor") or
+        (user_choice == "scissor" and comp_choice == "rock")): 
+        result = "rock"
+    else: 
+        result = "scissor"
+    
+
+    # Compare the result with user and computer 
+    # Printing either user or computer wins  
+    if (user_choice == comp_choice): #additional
+        print("<== Draw ==>") 
+    elif (result == user_choice):
+        t=t+1
+        print("<== User wins ==>") 
+    else: 
+        print("<== Computer wins ==>")
+        p=p+1
+    print("computer's score is:{} ".format(p)+'\n'+"users's score is {} ".format(t))
+    
+    
+    # Get the response from User to Play Again    
+    ans = input("Do you want to play again ? (Y/N) > ") 
+  
+    # Check the response from User and continue the loop
+    # Otherwise break the loop to close the game
+    if (ans == 'n' or ans == 'N') : 
+        break
+    
+    
+# Print a Thanks Message to the user
+print("\nThanks for playing Rock Paper Scissor Game \n") 
